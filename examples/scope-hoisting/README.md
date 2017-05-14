@@ -2,7 +2,7 @@ This example demonstrates Scope Hoisting in combination with Code Splitting.
 
 This is the dependency graph for the example: (solid lines express sync imports, dashed lines async imports)
 
-![](graph.svg)
+![](graph.png)
 
 All modules except `cjs` are EcmaScript modules. `cjs` is a CommonJs module.
 
@@ -12,11 +12,11 @@ The interesting thing here is that putting all modules in single scope won't wor
 * Module `shared` is accessed by two chunks (difference scopes)
 * Module `cjs` is a CommonJs module
 
-![](graph2.svg)
+![](graph2.png)
 
 webpack therefore uses a approach called **"Partial Scope Hoisting"** or "Module concatenation", which chooses the largest possible subsets of ES modules which can be scope hoisted and combines them with the default webpack primitives.
 
-![](graph3.svg)
+![](graph3.png)
 
 While module concatentation identifiers in modules are renamed to avoid conflicts and internal imports are simplified. External imports and exports from the root module use the existing ESM constructs.
 
