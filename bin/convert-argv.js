@@ -25,6 +25,8 @@ module.exports = function(yargs, argv, convertOptions) {
 	var extensions = Object.keys(interpret.extensions).sort(function(a, b) {
 		return a === ".js" ? -1 : b === ".js" ? 1 : a.length - b.length;
 	});
+	// 配置文件可以是webpack.config.js，也可以是webpackfile.js
+	// 在当前的工作目录下找
 	var defaultConfigFiles = ["webpack.config", "webpackfile"].map(function(filename) {
 		return extensions.map(function(ext) {
 			return {

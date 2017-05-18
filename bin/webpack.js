@@ -7,6 +7,7 @@
 var path = require("path");
 
 // Local version replace global one
+// 使用本地的webpack
 try {
 	var localWebpack = require.resolve(path.join(process.cwd(), "node_modules", "webpack", "bin", "webpack.js"));
 	if(__filename !== localWebpack) {
