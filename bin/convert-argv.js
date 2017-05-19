@@ -25,8 +25,8 @@ module.exports = function(yargs, argv, convertOptions) {
 	var extensions = Object.keys(interpret.extensions).sort(function(a, b) {
 		return a === ".js" ? -1 : b === ".js" ? 1 : a.length - b.length;
 	});
-	// 配置文件可以是webpack.config.js，也可以是webpackfile.js
-	// 在当前的工作目录下找
+	// TIP：配置文件可以是webpack.config.js，也可以是webpackfile.js
+	// TIP：在当前的工作目录下找
 	var defaultConfigFiles = ["webpack.config", "webpackfile"].map(function(filename) {
 		return extensions.map(function(ext) {
 			return {
@@ -99,6 +99,7 @@ module.exports = function(yargs, argv, convertOptions) {
 			var isES6DefaultExportedFunc = (
 				typeof options === "object" && options !== null && typeof options.default === "function"
 			);
+			// TIP：config文件导出的可以是函数，如果是函数，则参数是(argv.env, argv)，返回一个对象
 			if(typeof options === "function" || isES6DefaultExportedFunc) {
 				options = isES6DefaultExportedFunc ? options.default : options;
 				options = options(argv.env, argv);
